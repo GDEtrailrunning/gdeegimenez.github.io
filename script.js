@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //actualizarDiasRestantes();
-  //setInterval(actualizarDiasRestantes, 24*60*60*1000); // Actualizar diario
-  // Datos para el gráfico de líneas
+    actualizarDiasRestantes();
+    setInterval(actualizarDiasRestantes, 24*60*60*1000); // Actualizar diario
+  //Datos para el gráfico de líneas
 const dataLine1 = {
   labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'], // Etiquetas de los días
   datasets: [{
-    label: 'Km recorridos en Semana 28',
-    data: [10, 10, 17, 14, 28], // Datos de los km recorridos en cada día
+    label: 'Km recorridos en Semana 30',
+    data: [9, 8, 10, 6, 17], // Datos de los km recorridos en cada día
     borderColor: 'rgba(75, 192, 192, 1)',
     fill: true,
     tension: 0.1
@@ -14,23 +14,61 @@ const dataLine1 = {
 };
 
 const dataLine2 = {
-  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'], // Etiquetas de los días
+  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4'], // Etiquetas de los días
   datasets: [{
-    label: 'Km recorridos en Semana 29',
-    data: [12, 15, 12, 12, 18], // Datos de los km recorridos en cada día
-    borderColor: 'rgba(153, 102, 255, 1)',
+    label: 'Total Km recorridos en Semana 31',
+    data: [4, 5, 4, 35],// Datos de los km recorridos en cada día
+    borderColor: 'rgba(45, 78, 199, 1)',
     fill: true,
     tension: 0.1
   }]
 };
+
+const chartFont = {
+  family: 'Tajawal, Arial, sans-serif',
+  size: 12,
+  weight: '500'
+};
+
 // Configuración del gráfico de líneas
 const configLine = {
   type: 'line',
   data: dataLine1, // Puede cambiar esto a dataLine2 para mostrar el gráfico de la segunda sección
   options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: '#374151',
+          font: chartFont
+        }
+      },
+      tooltip: {
+        titleFont: chartFont,
+        bodyFont: chartFont,
+        footerFont: chartFont
+      }
+    },
     scales: {
+      x: {
+        ticks: {
+          color: '#4b5563',
+          font: chartFont
+        },
+        grid: {
+          color: 'rgba(15, 23, 42, 0.08)'
+        }
+      },
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+        ticks: {
+          color: '#4b5563',
+          font: chartFont
+        },
+        grid: {
+          color: 'rgba(15, 23, 42, 0.08)'
+        }
       }
     }
   }
@@ -42,18 +80,48 @@ const myChartLine2 = new Chart(document.getElementById('myChart-line-2'), {
   type: 'line',
   data: dataLine2,
   options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: '#374151',
+          font: chartFont
+        }
+      },
+      tooltip: {
+        titleFont: chartFont,
+        bodyFont: chartFont,
+        footerFont: chartFont
+      }
+    },
     scales: {
+      x: {
+        ticks: {
+          color: '#4b5563',
+          font: chartFont
+        },
+        grid: {
+          color: 'rgba(15, 23, 42, 0.08)'
+        }
+      },
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+        ticks: {
+          color: '#4b5563',
+          font: chartFont
+        },
+        grid: {
+          color: 'rgba(15, 23, 42, 0.08)'
+        }
       }
     }
   }
 });
 
-
 function actualizarDiasRestantes() {
   // Fecha objetivo fija
-  const objetivoDate = new Date('2026-06-13');
+  const objetivoDate = new Date('2026-08-09');
   const currentDate = new Date();
   const timeDiff = objetivoDate - currentDate;
   const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
