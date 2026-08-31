@@ -1,123 +1,134 @@
 document.addEventListener("DOMContentLoaded", function () {
     //actualizarDiasRestantes();
     //setInterval(actualizarDiasRestantes, 24*60*60*1000); // Actualizar diario
-  //Datos para el gráfico de líneas
-const dataLine2 = {
-  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'], // Etiquetas de los días
-  datasets: [{
-    label: 'Total Km recorridos en Semana 34',
-    data: [8, 10, 6, 12, 13],// Datos de los km recorridos en cada día
-    borderColor: 'rgba(45, 78, 199, 1)',
-    fill: true,
-    tension: 0.1
-  }]
-};
 
-const dataLine2 = {
-  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'], // Etiquetas de los días
-  datasets: [{
-    label: 'Total Km recorridos en Semana 35',
-    data: [12, 12, 16, 15, 23],// Datos de los km recorridos en cada día
-    borderColor: 'rgba(45, 78, 199, 1)',
-    fill: true,
-    tension: 0.1
-  }]
-};
+  // Datos para el gráfico de líneas
+  const dataLine1 = {
+    labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'],
+    datasets: [{
+      label: 'Total Km recorridos en Semana 34',
+      data: [8, 10, 6, 12, 13],
+      borderColor: 'rgba(45, 78, 199, 1)',
+      backgroundColor: 'rgba(45, 78, 199, 0.15)',
+      fill: true,
+      tension: 0.1
+    }]
+  };
 
-const chartFont = {
-  family: 'Tajawal, Arial, sans-serif',
-  size: 12,
-  weight: '500'
-};
+  const dataLine2 = {
+    labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'],
+    datasets: [{
+      label: 'Total Km recorridos en Semana 35',
+      data: [12, 12, 16, 15, 23],
+      borderColor: 'rgba(45, 78, 199, 1)',
+      backgroundColor: 'rgba(45, 78, 199, 0.15)',
+      fill: true,
+      tension: 0.1
+    }]
+  };
 
-// Configuración del gráfico de líneas
-const configLine = {
-  type: 'line',
-  data: dataLine1, // Puede cambiar esto a dataLine2 para mostrar el gráfico de la segunda sección
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: {
-          color: '#374151',
-          font: chartFont
+  const chartFont = {
+    family: 'Tajawal, Arial, sans-serif',
+    size: 12,
+    weight: '500'
+  };
+
+  // Configuración del gráfico de líneas
+  const configLine = {
+    type: 'line',
+    data: dataLine1,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#374151',
+            font: chartFont
+          }
+        },
+        tooltip: {
+          titleFont: chartFont,
+          bodyFont: chartFont,
+          footerFont: chartFont
         }
       },
-      tooltip: {
-        titleFont: chartFont,
-        bodyFont: chartFont,
-        footerFont: chartFont
-      }
-    },
-    scales: {
-      x: {
-        ticks: {
-          color: '#4b5563',
-          font: chartFont
+      scales: {
+        x: {
+          ticks: {
+            color: '#4b5563',
+            font: chartFont
+          },
+          grid: {
+            color: 'rgba(15, 23, 42, 0.08)'
+          }
         },
-        grid: {
-          color: 'rgba(15, 23, 42, 0.08)'
-        }
-      },
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: '#4b5563',
-          font: chartFont
-        },
-        grid: {
-          color: 'rgba(15, 23, 42, 0.08)'
-        }
-      }
-    }
-  }
-};
-
-// Seleccione los contextos de los <canvas> y cree los gráficos
-const myChartLine1 = new Chart(document.getElementById('myChart-line-1'), configLine);
-const myChartLine2 = new Chart(document.getElementById('myChart-line-2'), {
-  type: 'line',
-  data: dataLine2,
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: {
-          color: '#374151',
-          font: chartFont
-        }
-      },
-      tooltip: {
-        titleFont: chartFont,
-        bodyFont: chartFont,
-        footerFont: chartFont
-      }
-    },
-    scales: {
-      x: {
-        ticks: {
-          color: '#4b5563',
-          font: chartFont
-        },
-        grid: {
-          color: 'rgba(15, 23, 42, 0.08)'
-        }
-      },
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: '#4b5563',
-          font: chartFont
-        },
-        grid: {
-          color: 'rgba(15, 23, 42, 0.08)'
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#4b5563',
+            font: chartFont
+          },
+          grid: {
+            color: 'rgba(15, 23, 42, 0.08)'
+          }
         }
       }
     }
+  };
+
+  // Seleccione los contextos de los <canvas> y cree los gráficos
+  const chartCanvas1 = document.getElementById('myChart-line-1');
+  const chartCanvas2 = document.getElementById('myChart-line-2');
+
+  if (chartCanvas1) {
+    new Chart(chartCanvas1, configLine);
   }
-});
+
+  if (chartCanvas2) {
+    new Chart(chartCanvas2, {
+      type: 'line',
+      data: dataLine2,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#374151',
+              font: chartFont
+            }
+          },
+          tooltip: {
+            titleFont: chartFont,
+            bodyFont: chartFont,
+            footerFont: chartFont
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#4b5563',
+              font: chartFont
+            },
+            grid: {
+              color: 'rgba(15, 23, 42, 0.08)'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#4b5563',
+              font: chartFont
+            },
+            grid: {
+              color: 'rgba(15, 23, 42, 0.08)'
+            }
+          }
+        }
+      }
+    });
+  }
 
 function actualizarDiasRestantes() {
   // Fecha objetivo fija
@@ -131,40 +142,5 @@ function actualizarDiasRestantes() {
   const countdownElement = document.getElementById('countdown');
   countdownElement.innerHTML = `<span class="cuenta-regresiva-titulo">CUENTA REGRESIVA</span><br><span class="cuenta-regresiva-numero">${days}d : ${hours}h : ${minutes}m : ${seconds}s</span>`;
 }
-
-  // Crear dos nuevas instancias de HTMLVideoElement para cada sección
-  let Semana_1_video_1 = document.createElement("video");
-  let Semana_1_video_2 = document.createElement("video");
-  let Semana_2_video_3 = document.createElement("video");
-  let Semana_2_video_4 = document.createElement("video");
-
-  // Establecer las fuentes de video
-  Semana_1_video_1.src = "video 1.mp4"; // ruta de su primer video
-  Semana_1_video_2.src = "video 2.mp4"; // ruta de su segundo video
-  Semana_2_video_3.src = "video 3.mp4"; // ruta de su tercer video
-  Semana_2_video_4.src = "video 4.mp4"; // ruta de su cuarto video
-
-  // Establecer atributos de video
-  Semana_1_video_1.controls = true;
-  Semana_1_video_1.autoplay = false;
-  Semana_1_video_1.loop = false;
-
-  Semana_1_video_2.controls = true;
-  Semana_1_video_2.autoplay = false;
-  Semana_1_video_2.loop = false;
-
-  Semana_2_video_3.controls = true;
-  Semana_2_video_3.autoplay = false;
-  Semana_2_video_3.loop = false;
-
-  Semana_2_video_4.controls = true;
-  Semana_2_video_4.autoplay = false;
-  Semana_2_video_4.loop = false;
-
-  // Agregar los dos videos a cada sección
-  document.getElementById("Semana 1").appendChild(video1);
-  document.getElementById("Semana 1").appendChild(video2);
-  document.getElementById("Semana 2").appendChild(video3);
-  document.getElementById("Semana 2").appendChild(video4);
 
 });
