@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //actualizarDiasRestantes();
-    //setInterval(actualizarDiasRestantes, 24*60*60*1000); // Actualizar diario
+    actualizarDiasRestantes();
+    setInterval(actualizarDiasRestantes, 24*60*60*1000); // Actualizar diario
   //Datos para el gráfico de líneas
 const dataLine1 = {
-  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'], // Etiquetas de los días
+  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4'], // Etiquetas de los días
   datasets: [{
-    label: 'Km recorridos en Semana 42',
-    data: [10, 14, 10, 8, 28], // Datos de los km recorridos en cada día
+    label: 'Km recorridos en Semana 44',
+    data: [7, 8, 7, 12], // Datos de los km recorridos en cada día
     borderColor: 'rgba(75, 192, 192, 1)',
     fill: true,
     tension: 0.1
@@ -14,10 +14,10 @@ const dataLine1 = {
 };
 
 const dataLine2 = {
-  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5'], // Etiquetas de los días
+  labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4'], // Etiquetas de los días
   datasets: [{
-    label: 'Total Km recorridos en Semana 43',
-    data: [8, 9, 8, 8, 18],// Datos de los km recorridos en cada día
+    label: 'Total Km recorridos en Semana 45',
+    data: [5, 4, 4, 33],// Datos de los km recorridos en cada día
     borderColor: 'rgba(45, 78, 199, 1)',
     fill: true,
     tension: 0.1
@@ -137,34 +137,5 @@ function actualizarDiasRestantes() {
   let Semana_1_video_2 = document.createElement("video");
   let Semana_2_video_3 = document.createElement("video");
   let Semana_2_video_4 = document.createElement("video");
-
-  // Establecer las fuentes de video
-  Semana_1_video_1.src = "video 1.mp4"; // ruta de su primer video
-  Semana_1_video_2.src = "video 2.mp4"; // ruta de su segundo video
-  Semana_2_video_3.src = "video 3.mp4"; // ruta de su tercer video
-  Semana_2_video_4.src = "video 4.mp4"; // ruta de su cuarto video
-
-  // Establecer atributos de video
-  Semana_1_video_1.controls = true;
-  Semana_1_video_1.autoplay = false;
-  Semana_1_video_1.loop = false;
-
-  Semana_1_video_2.controls = true;
-  Semana_1_video_2.autoplay = false;
-  Semana_1_video_2.loop = false;
-
-  Semana_2_video_3.controls = true;
-  Semana_2_video_3.autoplay = false;
-  Semana_2_video_3.loop = false;
-
-  Semana_2_video_4.controls = true;
-  Semana_2_video_4.autoplay = false;
-  Semana_2_video_4.loop = false;
-
-  // Agregar los dos videos a cada sección
-  document.getElementById("Semana 1").appendChild(video1);
-  document.getElementById("Semana 1").appendChild(video2);
-  document.getElementById("Semana 2").appendChild(video3);
-  document.getElementById("Semana 2").appendChild(video4);
 
 });
