@@ -126,7 +126,9 @@ p {
   word-break: break-word;
 }
 
-.week-block.image .week-header h4::after {
+.week-block.image .week-header h4::after,
+.week-block.no-image.first-week .week-header h4::after,
+.week-block.no-image.second-week .week-header h4::after {
   content: "";
   display: block;
   width: clamp(56px, 10vw, 82px);
@@ -144,6 +146,10 @@ p {
 
 .week-block.no-image .week-header h4::after {
   display: none;
+}
+
+.week-block.no-image.second-week .week-header h4::after {
+  background-image: url("3.jpg");
 }
 
 .week-details {
